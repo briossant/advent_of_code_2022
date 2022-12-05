@@ -1,0 +1,11 @@
+
+exports.run = (input) => input
+    .split('\n\n')
+    .map((x,i)=>i!=0 ? x : x
+        .split('\n')
+        .slice(0,-1)
+        .map(x=>x.split('').filter((x,i)=>i%4 == 1))
+    )
+
+
+
