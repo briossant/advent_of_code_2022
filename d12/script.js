@@ -1,5 +1,6 @@
+const done_char = "~";
 
-const test = (grid, done_char, x, y, h) => (x2, y2) => x2 >= 0 && y2 >= 0 && x2<grid.length 
+const test = (grid, x, y, h) => (x2, y2) => x2 >= 0 && y2 >= 0 && x2<grid.length 
     && y2<grid[0].length && grid[x2][y2] != done_char && h-grid[x2][y2] >= -1;
 
 
@@ -22,7 +23,6 @@ const calculate_cost = (grid) => {
     st.h = 97;
     const file = [st];
  
-    const done_char = "~";
     
     const next = (t,x,y,c) => { 
         if(t(x,y)){
@@ -39,7 +39,7 @@ const calculate_cost = (grid) => {
         const k = file[0];
         file.shift();
 
-        const t = test(grid,done_char,k.x,k.y,k.h);
+        const t = test(grid,k.x,k.y,k.h);
         if(next(t,k.x+1,k.y,k.cost)) return k.cost;
         if(next(t,k.x-1,k.y,k.cost)) return k.cost;
         if(next(t,k.x,k.y-1,k.cost)) return k.cost;
